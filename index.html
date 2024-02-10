@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #888;
+  font-family: Arial, sans-serif;
+}
+.keypad {
+  margin-top: 25%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem 2rem;
+  padding: 1.25rem;
+}
+
+
+.keypad button {
+  padding: 1.25rem;
+  border-radius: 50%;
+  background: #333;
+  border: none;
+  font-size: 2.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.keypad button span {
+  font-size: 0.75rem;
+  margin-top: -0.25rem;
+  letter-spacing: 0.15rem;
+}
+.keypad button:active {
+  background: #555;
+}
+.call-button {
+  margin-bottom: 20px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: none;
+  width: 4.375rem;
+  height: 4.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.call-button img {
+  width: 4.375rem;
+  height: 4.375rem;
+}
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+.bottom-bar button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -1rem;
+  margin-right: 2.1rem;
+}
+.bottom-bar button.active {
+  color: #00BFFF;
+}
+.bottom-bar img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.3125rem;
+}
+.Voicemail {
+  width: 2.5625rem !important;
+  height: 1.5rem !important;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="keypad">
+  <button>1</button>
+  <button>2<span>ABC</span></button>
+  <button>3<span>DEF</span></button>
+  <button>4<span>GHI</span></button>
+  <button>5<span>JKL</span></button>
+  <button>6<span>MNO</span></button>
+  <button>7<span>PQRS</span></button>
+  <button>8<span>TUV</span></button>
+  <button>9<span>WXYZ</span></button>
+  <button class="asterix">&lowast;</button>
+  <button>0<span class="plus">+</span></button>
+  <button class="diezdroit"><svg width="27.5" height="27.5" viewBox="0 0 100 100"> 
+  <path d="M30,0 L30,100 M70,0 L70,100 M0,30 L100,30 M0,70 L100,70" stroke="white" stroke-width="10"/>
+</svg></button>
+</div>
+
+<button class="call-button"><img src="iphone-call-icon-28.jpg" alt="Call"></button>
+
+<div class="bottom-bar">
+  <button class="Favoris"><img src="star.png" alt="Favoris">Favoris</button>
+  <button class="Recents"><img src="Recents.png" alt="Recents">Récents</button>
+  <button class="Contacts"><img src="md-contact-128.png" alt="Contacts">Contacts</button>
+  <button class="active Keypad"><img src="ios-keypad-3-32.png" alt="Keypad">Clavier</button>
+  <button ><img class="Voicemail" src="voicemail.png" alt="Voicemail">Messagerie</button>
+</div>
+
+
+
+</body>
+</html>
