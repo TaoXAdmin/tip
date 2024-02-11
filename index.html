@@ -194,6 +194,7 @@
   const display = document.querySelector('.numero');
   const topSection = document.querySelector('.top');
   const deleteButton = document.querySelector('.delete-button');
+  const deleteButton1 =  document.querySelector('.delete');
 
   // Initialise la transparence des sections
   const hideElement = (element) => {
@@ -259,7 +260,7 @@
   });
 
   // Ajoute un écouteur d'événement au bouton de suppression
-  deleteButton.addEventListener('click', (e) => {
+  deleteButton1.addEventListener('click', (e) => {
     e.preventDefault();
     deleteLastNumber();
   });
