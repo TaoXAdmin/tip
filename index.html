@@ -2,8 +2,13 @@
 <html lang="fr">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="appelrealise.html" as="document">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <style>
   body {
+  font-family: 'Roboto', sans-serif !important;
   margin: 0;
   padding: 0;
   background-color: #000;
@@ -13,7 +18,7 @@
   justify-content: center;
   height: 100vh;
   color: #888;
-  font-family: Arial, sans-serif;
+   
 }
 
 .top{
@@ -76,7 +81,7 @@
 .call-button {
   margin-bottom: 2rem;
   
-  background-color: #4CAF50;
+  background-color: black;
   border-radius: 50%;
   border: none;
   width: 4.375rem;
@@ -149,7 +154,31 @@
 	transform: scale(1.5);
 	padding-left:  0.15rem;
 	}
-	
+	.fade-out {
+  animation: fadeOut 0.2s forwards; /* Ajustez le temps selon vos besoins */
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95); /* Légère réduction pour l'effet */
+  }
+}
+/* Au début, la page est complètement transparente */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Appliquez cette classe au body ou à l'élément principal de votre page pour lancer l'animation */
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
 
 </style>
 </head>
@@ -188,10 +217,14 @@
   <button ><img class="Voicemail" src="voicemail.png" alt="Voicemail">Messagerie</button>
 </div>
 
-
-<script>document.addEventListener('DOMContentLoaded', () => {
+<div id="bottom"></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('fade-in');
+});
+const display = document.querySelector('.numero');
+document.addEventListener('DOMContentLoaded', () => {
   // Sélection de la div où les numéros seront affichés
-  const display = document.querySelector('.numero');
   const topSection = document.querySelector('.top');
   const deleteButton = document.querySelector('.delete-button');
   const deleteButton1 =  document.querySelector('.delete');
@@ -264,6 +297,19 @@
     e.preventDefault();
     deleteLastNumber();
   });
+});
+
+document.querySelector('.call-button img').addEventListener('click', function() {
+  // Animation de sortie pour la première page
+  
+  document.body.classList.add('fade-out');
+   
+   
+  // Redirection après l'animation
+  setTimeout(function() {
+	localStorage.setItem('enteredNumber', display.textContent);
+    window.location.href = 'appelrealise.html'; // Assurez-vous que le chemin est correct
+  }, 300); // Ajustez le timing selon la durée de votre animation
 });
 
 
