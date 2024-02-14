@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="appel.html" as="document">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<style> 
+body {
+  backdrop-filter: blur(40px);
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #868f96 0%, #596164 100%) center no-repeat;
+  background-size: cover;
+}
+/* Au début, la page est complètement transparente */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Appliquez cette classe au body ou à l'élément principal de votre page pour lancer l'animation */
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+.fade-out {
+  animation: fadeOut 0.2s forwards; /* Ajustez le temps selon vos besoins */
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95); /* Légère réduction pour l'effet */
+  }
+}
+.caller-info {
+  margin-top: 0rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.caller-name {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.call-status {
+  font-size: 1.45rem;
+  margin-top: 0.5rem;
+  color: #bbb;
+}
+
+.call-options {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem 0.5rem;
+  padding: 1.5rem;
+  transform: scale(1.3);
+  margin-bottom: 2rem;
+}
+
+.call-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.call-buttons img {
+  width: 50%;
+  height: auto;
+}
+
+.call-buttons-label {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #fff;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.06rem;
+}
+
+.hangup-buttons {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  border: none;
+  width: 4.375rem;
+  height: 4.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.45);
+}
+
+.hangup-buttons img{
+	  background-size: cover;
+}
+.hangupz{
+
+}
+.silence{
+
+}
+
+.clavierz{
+	 transform: scale(1.2);
+}
+
+.speakerz{
+	transform: scale(1.5);
+}
+
+
+.facetimez{
+	transform: scale(1.4);
+	opacity:0.55;
+}
+.newz{
+	transform: scale(0.9);
+	opacity:0.55;
+}
+.contactz{
+	transform: scale(1.25);
+}
+.text1{
+	opacity:0.25;
+}
+/* Replace '.call-buttons img' with the correct paths for your icons */
+
+</style>
+</head>
+<body>
+
+<div class="caller-info">
+  <div class="caller-name"></div>
+  <div class="call-status">appel...</div>
+</div>
+
+<div class="call-options">
+  <div>
+    <button class="call-buttons"><img class="silence" src="micro.png" alt="Silence"></button>
+    <div class="call-buttons-label">silence</div>
+  </div>
+  <div>
+    <button class="call-buttons"><img class="clavierz" src="clavier.png" alt="Clavier"></button>
+    <div class="call-buttons-label">clavier</div>
+  </div>
+  <div>
+    <button class="call-buttons"><img class="speakerz" src="speaker.png" alt="Haut-parleur"></button>
+    <div class="call-buttons-label">haut-parleur</div>
+  </div>
+  <div>
+    <button class="call-buttons"><img class="newz" src="add.png" alt="Nouvel appel"></button>
+    <div class="call-buttons-label text1">nouvel appel</div>
+  </div>
+  <div>
+    <button class="call-buttons"><img class="facetimez" src="Facetime.png" alt="FaceTime"></button>
+    <div class="call-buttons-label text1">FaceTime</div>
+  </div>
+  <div>
+    <button class="call-buttons"><img class="contactz" src="contact.png" alt="Contacts"></button>
+    <div class="call-buttons-label ">contacts</div>
+  </div>
+</div>
+
+<button class="hangup-buttons"><img class="hangupz" src="hangup.png" alt="Raccrocher"></button>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('fade-in');
+  const storedNumber = localStorage.getItem('enteredNumber');
+  if (storedNumber) {
+    document.querySelector('.caller-name').textContent = storedNumber;
+  }
+});
+
+document.querySelector('.hangup-buttons').addEventListener('click', function() {
+  // Animation de sortie pour la page d'appel
+  document.body.classList.add('fade-out');
+  
+     setTimeout(function() {
+    window.location.href = 'appel.html#bottom'; 
+  }, 300);
+  // Redirection ou action après l'animation
+   // Ajustez le timing selon la durée de votre animation
+});
+
+document.querySelector('.call-button img').addEventListener('click', function() {
+  // Applique l'animation de sortie
+  document.body.classList.add('fade-out');
+  
+ // Ajustez ce délai à la durée de votre animation fade-out
+});
+
+
+</script>
+</body>
+</html>
