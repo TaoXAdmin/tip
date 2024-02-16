@@ -2,24 +2,51 @@
 <html lang="fr">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preload" href="appelrealise.html" as="document">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <style>
-  body {
-  font-family: 'Roboto', sans-serif !important;
-  margin: 0;
-  padding: 0;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: #888;
-   
-}
+   body {
+    background-color: #000;
+    height: 100vh;
+	width: 100%;
+    margin: 0; /* Assurez-vous que le corps n'a pas de marge */
+    overflow: scroll-x; /* Empêche le défilement lors des transitions */
+  }
+
+  .content, .content2 {
+    font-family: 'Roboto', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    position: absolute; /* Positionnement absolu pour permettre les transitions */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+
+  }
+
+  .content {
+    background-color: #000;
+    color: #888;
+	z-index:1;
+  }
+
+  .content2 {
+    backdrop-filter: blur(40px);
+    background-color: #000;
+    background: linear-gradient(to right, #868f96 0%, #596164 100%) center no-repeat;
+    background-size: cover;
+    color: #fff;
+    transform: translateX(0); /* Initialement positionné hors de l'écran */
+    display: none; /* Caché au début */
+	visibility: hidden;
+	opacity: 0;
+	 z-index: 2; 
+  }
 
 .top{
   margin-top: 60rem;
@@ -154,165 +181,315 @@
 	transform: scale(1.5);
 	padding-left:  0.15rem;
 	}
-	.fade-out {
-  animation: fadeOut 0.2s forwards; /* Ajustez le temps selon vos besoins */
+.caller-info {
+  margin-top: 0rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: scale(0.95); /* Légère réduction pour l'effet */
-  }
-}
-/* Au début, la page est complètement transparente */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.caller-name {
+  font-size: 2rem;
+  color: #fff;
 }
 
-/* Appliquez cette classe au body ou à l'élément principal de votre page pour lancer l'animation */
-.fade-in {
-  animation: fadeIn 0.2s ease-out;
+.call-status {
+  font-size: 1.45rem;
+  margin-top: 0.5rem;
+  color: #bbb;
 }
 
+.call-options {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem 0.5rem;
+  padding: 1.5rem;
+  transform: scale(1.3);
+  margin-bottom: 2rem;
+}
+
+.call-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.call-buttons img {
+  width: 50%;
+  height: auto;
+}
+
+.call-buttons-label {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #fff;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.06rem;
+}
+
+.hangup-buttons {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  border: none;
+  width: 4.375rem;
+  height: 4.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.45);
+}
+
+.hangup-buttons img{
+	  background-size: cover;
+}
+.hangupz{
+
+}
+.silence{
+
+}
+
+.clavierz{
+	 transform: scale(1.2);
+}
+
+.speakerz{
+	transform: scale(1.5);
+}
+
+
+.facetimez{
+	transform: scale(1.4);
+	opacity:0.55;
+}
+.newz{
+	transform: scale(0.9);
+	opacity:0.55;
+}
+.contactz{
+	transform: scale(1.25);
+}
+.text1{
+	opacity:0.25;
+}
+
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
 
 </style>
 </head>
 <body>
 
-<div class="top">
-	<div class="numero"></div>
-	<div class="Ajouter">Ajouter ce numéro</div>
+<div class="content visible">
+  <div class="top">
+    <div class="numero"></div>
+    <div class="Ajouter">Ajouter ce numéro</div>
+  </div>
+
+  <div class="keypad">
+    <button>1</button>
+    <button>2<span>ABC</span></button>
+    <button>3<span>DEF</span></button>
+    <button>4<span>GHI</span></button>
+    <button>5<span>JKL</span></button>
+    <button>6<span>MNO</span></button>
+    <button>7<span>PQRS</span></button>
+    <button>8<span>TUV</span></button>
+    <button>9<span>WXYZ</span></button>
+    <button><span class="asterix">&lowast;</span></button>
+    <button>0<span class="plus">+</span></button>
+    <button><span class="diezdroit">#</span></button>
+  </div>
+
+  <div class="middle">
+    <button class="call-button"><img src="iphone-call-icon-28.jpg" alt="Call"></button>
+    <button class="delete-button"><img class="delete" src="delete.png" alt="Delete"></button>
+  </div>
+
+  <div class="bottom-bar">
+    <button class="Favoris"><img src="star.png" alt="Favoris">Favoris</button>
+    <button class="Recents"><img src="Recents.png" alt="Recents">Récents</button>
+    <button class="Contacts"><img src="md-contact-128.png" alt="Contacts">Contacts</button>
+    <button class="active Keypad"><img src="ios-keypad-3-32.png" alt="Keypad">Clavier</button>
+    <button><img class="Voicemail" src="voicemail.png" alt="Voicemail">Messagerie</button>
+  </div>
 </div>
 
-<div class="keypad">
-  <button>1</button>
-  <button>2<span>ABC</span></button>
-  <button>3<span>DEF</span></button>
-  <button>4<span>GHI</span></button>
-  <button>5<span>JKL</span></button>
-  <button>6<span>MNO</span></button>
-  <button>7<span>PQRS</span></button>
-  <button>8<span>TUV</span></button>
-  <button>9<span>WXYZ</span></button>
-  <button ><span class="asterix">&lowast;</span></button>
-  <button>0<span class="plus">+</span></button>
-  <button ><span class="diezdroit">#</span></button>
+<div class="content2 hidden">
+  <div class="caller-info">
+    <div class="caller-name"></div>
+    <div class="call-status"></div>
+  </div>
+
+  <div class="call-options">
+    <div>
+      <button class="call-buttons"><img class="silence" src="micro.png" alt="Silence"></button>
+      <div class="call-buttons-label">silence</div>
+    </div>
+    <div>
+      <button class="call-buttons"><img class="clavierz" src="clavier.png" alt="Clavier"></button>
+      <div class="call-buttons-label">clavier</div>
+    </div>
+    <div>
+      <button class="call-buttons"><img class="speakerz" src="speaker.png" alt="Haut-parleur"></button>
+      <div class="call-buttons-label">haut-parleur</div>
+    </div>
+    <div>
+      <button class="call-buttons"><img class="newz" src="add.png" alt="Nouvel appel"></button>
+      <div class="call-buttons-label text1">nouvel appel</div>
+    </div>
+    <div>
+      <button class="call-buttons"><img class="facetimez" src="Facetime.png" alt="FaceTime"></button>
+      <div class="call-buttons-label text1">FaceTime</div>
+    </div>
+    <div>
+      <button class="call-buttons"><img class="contactz" src="contact.png" alt="Contacts"></button>
+      <div class="call-buttons-label">contacts</div>
+    </div>
+  </div>
+
+  <button class="hangup-buttons"><img src="hangup.png" alt="Raccrocher"></button>
 </div>
 
-<div  class="middle">
-<button class="call-button"><img src="iphone-call-icon-28.jpg" alt="Call"></button>
-<button class="delete-button"><img class="delete" src="delete.png" alt="Delete"></button>
-</div>
-
-<div class="bottom-bar">
-  <button class="Favoris"><img src="star.png" alt="Favoris">Favoris</button>
-  <button class="Recents"><img src="Recents.png" alt="Recents">Récents</button>
-  <button class="Contacts"><img src="md-contact-128.png" alt="Contacts">Contacts</button>
-  <button class="active Keypad"><img src="ios-keypad-3-32.png" alt="Keypad">Clavier</button>
-  <button ><img class="Voicemail" src="voicemail.png" alt="Voicemail">Messagerie</button>
-</div>
-
-<div id="bottom"></div>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('fade-in');
-});
-const display = document.querySelector('.numero');
-document.addEventListener('DOMContentLoaded', () => {
-  // Sélection de la div où les numéros seront affichés
-  const topSection = document.querySelector('.top');
-  const deleteButton = document.querySelector('.delete-button');
-  const deleteButton1 =  document.querySelector('.delete');
+    // Initialement, ajoute la classe fade-in au body si nécessaire
+   
 
-  // Initialise la transparence des sections
-  const hideElement = (element) => {
-    element.style.opacity = '0';
-    element.style.visibility = 'hidden';
-  };
+    const display = document.querySelector('.numero');
+    const topSection = document.querySelector('.top');
+    const deleteButton = document.querySelector('.delete-button');
+    const deleteButton1 = document.querySelector('.delete');
+    const page1 = document.querySelector('.content');
+    const page2 = document.querySelector('.content2');
 
-  const showElement = (element) => {
-    element.style.opacity = '1';
-    element.style.visibility = 'visible';
-  };
-
-  // Cache la section top et le bouton de suppression au chargement
-  hideElement(topSection);
-  hideElement(deleteButton);
-
-  // Fonction pour ajouter un numéro et gérer l'espace tous les deux chiffres
-  const addNumber = (number) => {
-    const digit = number.match(/\d/); // Extrait uniquement le chiffre
-    if (digit) {
-      let currentText = display.textContent.replace(/\s+/g, ''); // Supprime les espaces existants
-      currentText += digit[0]; // Ajoute le nouveau chiffre
-      
-      // Ajoute des espaces tous les deux chiffres
-      const newText = currentText.split('').reduce((acc, curr, index) => {
-        return acc + ((index % 2 === 0 && index !== 0) ? ' ' : '') + curr;
-      }, '');
-
-      display.textContent = newText;
-
-      // Montre la section top et le bouton de suppression dès qu'un numéro est entré
-      showElement(topSection);
-      showElement(deleteButton);
+    // Fonctions pour montrer et cacher les éléments
+    function hideElement(element) {
+        element.style.opacity = '0';
+        element.style.visibility = 'hidden';
     }
-  };
 
-  // Fonction pour supprimer le dernier numéro entré et maintenir l'espace correctement
-  const deleteLastNumber = () => {
-    let currentText = display.textContent.replace(/\s+/g, ''); // Supprime les espaces existants
-    currentText = currentText.slice(0, -1); // Supprime le dernier chiffre
+    function showElement(element) {
+        element.style.opacity = '1';
+        element.style.visibility = 'visible';
+    }
 
-    // Réapplique les espaces tous les deux chiffres
+    // Cache initialement la section top et le bouton de suppression
+    hideElement(topSection);
+    hideElement(deleteButton);
+
+   // Ajoute uniquement des chiffres, ignore les lettres ou autres caractères
+function addNumber(buttonContent) {
+    // Extrait le premier caractère numérique trouvé dans le contenu du bouton
+    const number = buttonContent.match(/\d/);
+
+    if (number) {
+        let currentText = display.textContent.replace(/\s+/g, '');
+        currentText += number[0]; // Utilise le chiffre extrait
+
+        // Formate le texte avec des espaces tous les deux chiffres
+        const newText = currentText.split('').reduce((acc, curr, index) => {
+            return acc + ((index % 2 === 0 && index !== 0) ? ' ' : '') + curr;
+        }, '');
+
+        display.textContent = newText;
+        showElement(topSection);
+        showElement(deleteButton);
+    }
+}
+
+// Fonction pour supprimer le dernier chiffre entré
+function deleteLastNumber() {
+    let currentText = display.textContent.replace(/\s+/g, '');
+    currentText = currentText.slice(0, -1);
+
+    // Réapplique le formatage après suppression
     const newText = currentText.split('').reduce((acc, curr, index) => {
-      return acc + ((index % 2 === 0 && index !== 0) ? ' ' : '') + curr;
+        return acc + ((index % 2 === 0 && index !== 0) ? ' ' : '') + curr;
     }, '');
 
     display.textContent = newText;
 
-    // Cache la section top et le bouton de suppression si aucun numéro n'est affiché
+    // Cache la section et le bouton de suppression si le texte est vide
     if (display.textContent.length === 0) {
-      hideElement(topSection);
-      hideElement(deleteButton);
+        hideElement(topSection);
+        hideElement(deleteButton);
     }
-  };
+}
 
-  // Ajoute un écouteur d'événement à chaque bouton de chiffre
-  document.querySelectorAll('.keypad button').forEach(button => {
+// Écouteurs d'événements pour les boutons du clavier
+document.querySelectorAll('.keypad button').forEach(button => {
     button.addEventListener('click', (e) => {
-      e.preventDefault();
-      const number = button.textContent.trim();
-      addNumber(number);
+        e.preventDefault();
+        const buttonContent = button.textContent.trim();
+        addNumber(buttonContent); // Passer le contenu du bouton à la fonction
     });
-  });
+});
 
-  // Ajoute un écouteur d'événement au bouton de suppression
-  deleteButton1.addEventListener('click', (e) => {
+// Écouteur d'événement pour le bouton de suppression
+deleteButton1.addEventListener('click', (e) => {
     e.preventDefault();
     deleteLastNumber();
-  });
 });
 
-document.querySelector('.call-button img').addEventListener('click', function() {
-  // Animation de sortie pour la première page
-  
-  document.body.classList.add('fade-out');
-   
-   
-  // Redirection après l'animation
-  setTimeout(function() {
-	localStorage.setItem('enteredNumber', display.textContent);
-    window.location.href = 'appelrealise.html'; // Assurez-vous que le chemin est correct
-  }, 300); // Ajustez le timing selon la durée de votre animation
+function toggleView() {
+  const callStatus = document.querySelector('.call-status');
+  const callerNameDiv = document.querySelector('.caller-name'); // Sélectionnez la div où le nom de l'appelant doit être affiché
+  const numberEntered = display.textContent.trim(); // Obtenez le numéro composé, sans espaces superflus
+  const bottomElement = document.querySelector('.bottom-bar');
+  // Vérifier si la première page est visible
+  if (page1.classList.contains('visible')) {
+    callerNameDiv.textContent = numberEntered; // Mettre à jour la div avec le numéro composé
+	callStatus.textContent = "appel...";
+    page1.classList.remove('visible'); // Commencer la transition pour cacher la page1
+    page2.classList.remove('hidden'); // Préparer la page2 à être montrée
+
+    setTimeout(() => {
+      page1.style.display = 'none'; // Cacher la page1
+      page2.style.display = 'flex'; // Afficher la page2
+      page2.classList.add('visible'); // Commencer la transition pour montrer la page2
+    }, 500);
+  } else {	
+	callStatus.textContent = "appel terminé";
+	display.textContent = "";
+	if (display.textContent.length === 0) {
+        hideElement(topSection);
+        hideElement(deleteButton);
+    }
+    page2.classList.remove('visible'); // Commencer la transition pour cacher la page2
+    page1.classList.remove('hidden'); // Préparer la page1 à être montrée
+
+    setTimeout(() => {
+      page2.style.display = 'none'; // Cacher la page2	  
+      page1.style.display = 'flex'; // Afficher la page1
+      page1.classList.add('visible'); // Commencer la transition pour montrer la page1
+	  bottomElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 500);
+  }
+}
+
+    document.querySelector('.call-button img').addEventListener('click', toggleView);
+    document.querySelector('.hangup-buttons img').addEventListener('click', toggleView);
 });
-
-
 </script>
 </body>
 </html>
